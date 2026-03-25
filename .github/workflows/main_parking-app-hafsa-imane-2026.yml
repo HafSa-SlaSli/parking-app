@@ -60,12 +60,7 @@ jobs:
         with:
           name: python-app
       
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_078B9A07D78543C6A5248365AD789100 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8E00AFD480A94821A9E4E2209AD49A75 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EDD5DC133F4D4E29973982907E74A955 }}
+     
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
@@ -73,4 +68,6 @@ jobs:
         with:
           app-name: 'Parking-App-Hafsa-Imane-2026'
           slot-name: 'Production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: .
           
